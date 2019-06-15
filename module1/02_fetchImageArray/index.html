@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Fetching an image array</title>
+</head>
+
+<body>
+    <h2>Image gallery</h2>
+
+    <script>
+        const filenames = ['images/flower.jpg', 'images/pattern.jpg', 'images/umbrella.jpg'];
+
+        displayImages();
+
+        async function displayImages() {
+            for(let filename of filenames) {
+                const response = await fetch(filename);
+                const blob = await response.blob();
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(blob);
+                img.width = 200;
+                document.body.append(img);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Data APIs - Fetching an image</title>
+</head>
+
+<body>
+    <h1>Time to fetch an image</h1>
+    <img src="" id = "myImage" />
+    <img src="" id = "imgArray" />
+
+    <script>
+        console.log('About to fetch an image');
+
+        catchBirdie().catch(error => {
+            console.log("Error!");
+            console.log(error);
+        });
+
+        async function catchBirdie() {
+            const response = await fetch('bird.jpg');
+            const blob = await response.blob();
+            document.getElementById('myImage').src = URL.createObjectURL(blob);
+        }
+
+    </script>
+</body>
+
+</html>
